@@ -1,0 +1,2 @@
+"use strict";var t=require("react/jsx-runtime");exports.PageTitle=function(e){var r=e.children;return t.jsxs("h1",{className:"text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-5xl md:leading-14",children:[r," Storybook-Components"]})},exports.StaticText=function(){return t.jsx("p",{children:"Static text to test the most basic component. Storybook-Components"})};
+//# sourceMappingURL=index.js.map

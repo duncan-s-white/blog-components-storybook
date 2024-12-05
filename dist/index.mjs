@@ -1,0 +1,2 @@
+import{jsxs as t,jsx as e}from"react/jsx-runtime";function n(e){var n=e.children;return t("h1",{className:"text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-5xl md:leading-14",children:[n," Storybook-Components"]})}function o(){return e("p",{children:"Static text to test the most basic component. Storybook-Components"})}export{n as PageTitle,o as StaticText};
+//# sourceMappingURL=index.mjs.map
