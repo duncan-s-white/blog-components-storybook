@@ -1,4 +1,5 @@
 import type { StorybookConfig } from "@storybook/nextjs";
+// import { Options } from '@swc/core';
 
 const config: StorybookConfig = {
   stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
@@ -7,10 +8,11 @@ const config: StorybookConfig = {
     "@storybook/addon-essentials",
     "@chromatic-com/storybook",
     "@storybook/addon-interactions",
+    "@storybook/addon-themes"
   ],
   framework: {
     name: "@storybook/nextjs",
     options: {},
-  },
+  }
 };
 export default config;
