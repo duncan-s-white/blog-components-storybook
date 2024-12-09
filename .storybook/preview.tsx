@@ -26,7 +26,12 @@ const preview: Preview = {
         return React.createElement(DocsContainer, newProps);
       },
     },
-  }
+    options: {
+      storySort: {
+        order: ['Atoms', 'Molecules', 'Organisms'],
+      },
+    },
+  },
 };
 
 export const decorators = [
