@@ -38,8 +38,8 @@ jobs:
             git config --global url."https://${{ secrets.PERSONAL_GITHUB_TOKEN }}:@github.com".insteadOf "https://github.com"
             cd htdocs/test
             git pull origin main
-            npm ci
-            npm run build-storybook
+            rm -rf node_modules && yarn install --frozen-lockfile
+            yarn run build-storybook
       - name: Update deployment Status (success)
         if: success()
         uses: chrnorm/deployment-status@v2
