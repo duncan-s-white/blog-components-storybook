@@ -8,6 +8,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     name: Build and Push
+    permissions:
+      deployments: write
     steps:
       - name: git-checkout
         uses: actions/checkout@v4
