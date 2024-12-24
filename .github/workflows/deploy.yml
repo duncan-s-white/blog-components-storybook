@@ -5,8 +5,36 @@ on:
     branches:
       - main
 jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Build and Push
+    steps:
+      - name: git-checkout
+        uses: actions/checkout@v2
+
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 20.x
+
+      - name: Install Dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Build Storybook Static
+        run: yarn run build-storybook
+
+      - name: Push
+        uses: s0/git-publish-subdir-action@develop
+        env:
+          REPO: self
+          BRANCH: build # The branch name where you want to push the assets
+          FOLDER: build # The directory where your assets are generated
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # GitHub will automatically add this - you don't need to bother getting a token
+          MESSAGE: "Build: ({sha}) {msg}" # The commit message
+
   deploy:
     name: Deploy project with Nginx
+    needs: build
     permissions:
       deployments: write
     runs-on: ubuntu-latest
@@ -16,15 +44,8 @@ jobs:
         with:
           ref: main
           token: ${{ secrets.PERSONAL_GITHUB_TOKEN }}
-      - name: Create GitHub deployment
-        uses: chrnorm/deployment-action@v2
-        id: deployment
-        with:
-          token: "${{ github.token }}"
-          environment-url: ${{ vars.MY_APP }}
-          environment: production
+
       - name: Set up SSH Key and Deploy my App on Server
-        # run: |
         uses: appleboy/ssh-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.PERSONAL_GITHUB_TOKEN }}
@@ -36,10 +57,9 @@ jobs:
           port: 22
           script: |
             git config --global url."https://${{ secrets.PERSONAL_GITHUB_TOKEN }}:@github.com".insteadOf "https://github.com"
-            cd htdocs/test
-            git pull origin main
-            rm -rf node_modules && yarn install --frozen-lockfile
-            yarn run build-storybook
+            cd htdocs/build
+            git pull origin build
+
       - name: Update deployment Status (success)
         if: success()
         uses: chrnorm/deployment-status@v2
