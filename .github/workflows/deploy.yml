@@ -68,7 +68,7 @@ jobs:
           script: |
             git config --global url."https://${{ secrets.PERSONAL_GITHUB_TOKEN }}:@github.com".insteadOf "https://github.com"
             cd htdocs/storybook.duncanwhite.co.uk
-            git pull origin build
+            git pull origin main
 
       - name: Update deployment Status (success)
         if: success()
