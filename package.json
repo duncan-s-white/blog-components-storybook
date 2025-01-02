@@ -10,6 +10,7 @@
   "private": false,
   "devDependencies": {
     "@chromatic-com/storybook": "^3.2.2",
+    "@headlessui/react": "1.7.19",
     "@rollup/plugin-commonjs": "^28.0.1",
     "@rollup/plugin-node-resolve": "^15.3.0",
     "@rollup/plugin-terser": "^0.4.4",
@@ -28,6 +29,7 @@
     "autoprefixer": "^10.4.20",
     "github-slugger": "^2.0.0",
     "next": "14.2.3",
+    "next-themes": "^0.3.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "rollup": "^4.28.0",
@@ -39,11 +41,13 @@
     "typescript": "^5.7.2"
   },
   "peerDependencies": {
+    "@headlessui/react": "1.7.19",
+    "github-slugger": "^2.0.0",
     "next": "14.2.3",
+    "next-themes": "^0.3.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "tailwindcss": "3.4.3",
-    "github-slugger": "^2.0.0"
+    "tailwindcss": "3.4.3"
   },
   "scripts": {
     "rollup": "rollup -c --bundleConfigAsCjs",

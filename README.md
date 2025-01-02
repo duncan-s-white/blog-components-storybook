@@ -8,6 +8,26 @@ The npm package can be installed into any next.js application.
 
 `npm i tailwind-blog-storybook`
 
-or
+For my projects I am using Yarn so will show the yarn commands:
 
 `yarn add tailwind-blog-storybook`
+
+## Developing Locally
+
+To build the package using rollup use:
+
+`yarn run rollup`
+
+I am using [Yalc](https://www.npmjs.com/package/yalc) to publish and consume the package while in local development, use:
+
+`yalc push`
+
+to both publish to the local yalc repository and propagate all changes to existing yalc package installations.
+
+alternatively use `yalc publish` if you just wish to publish without updating.
+
+When local development work has been completed, build with rollup and deploy to the npm register with:
+
+`yarn npm publish`???
+
+You will be prompted for login details.
