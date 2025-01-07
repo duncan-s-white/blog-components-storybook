@@ -55,6 +55,4 @@ interface Props {
 /** Tag Slug UI Component */
 declare const Tag: ({ text }: Props) => react_jsx_runtime.JSX.Element;
 
-declare const ThemeSwitch: () => react_jsx_runtime.JSX.Element;
-
-export { Card, Image, CustomLink as Link, PageTitle, Paragraph, Tag, ThemeSwitch };
+export { Card, Image, CustomLink as Link, PageTitle, Paragraph, Tag };

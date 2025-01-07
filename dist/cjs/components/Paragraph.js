@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0});var e=require("react/jsx-runtime");exports.default=function(r){var t=r.children;return e.jsx("p",{className:"prose mb-3 max-w-none text-gray-500 dark:text-gray-400",children:t})};
