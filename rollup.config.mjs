@@ -1,3 +1,4 @@
+import { createRequire } from 'node:module'
 
 import nodeResolve from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
@@ -6,29 +7,33 @@ import dts from 'rollup-plugin-dts'
 import terser from '@rollup/plugin-terser' 
 import peerDepsExternal from 'rollup-plugin-peer-deps-external'
 
-// const packageJson = require('./package.json')
+const require = createRequire(import.meta.url)
+
+const packageJson = require('./package.json')
+
+const outputOptions = {
+  sourcemap: true,
+  exports: 'named',
+  preserveModules: true,
+  // Ensures that CJS default exports are imported properly (based on __esModule)
+  // If needed, can switch to 'compat' which checks for .default prop on the default export instead
+  // see https://rollupjs.org/configuration-options/#output-interop
+  interop: 'auto',
+};
 
 export default [
   {
     input: "src/index.ts",
     output: [
       {
-        // file: packageJson.main,
-        dir: 'dist/cjs',
+        dir: packageJson.main,
         format: 'cjs',
-        // sourcemap: true,
-        exports: 'named',
-        preserveModules: true,
-        interop: 'auto',
+        ...outputOptions,
       },
       {
-        // file: packageJson.module,
-        dir: 'dist/esm',
+        dir: packageJson.module,
         format: 'esm',
-        // sourcemap: true,
-        exports: 'named',
-        preserveModules: true,
-        interop: 'auto',
+        ...outputOptions,
       }
     ],
     plugins: [
@@ -42,8 +47,7 @@ export default [
   },
   {
     input: 'src/index.ts',
-    // output: [{ file: packageJson.types }],
-    output: [{ file: "dist/index.d.ts" }],
+    output: [{ file: packageJson.types }],
     plugins: [
       dts()
     ],

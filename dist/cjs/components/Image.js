@@ -1,1 +1,0 @@
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0});var e=require("tslib"),r=require("react/jsx-runtime");function t(e){return e&&e.__esModule?e:{default:e}}var s=t(require("next/image")),u=process.env.BASE_PATH;exports.default=function(t){var c=t.src,n=e.__rest(t,["src"]);return r.jsx(s.default,e.__assign({src:"".concat(u||"").concat(c)},n))};
