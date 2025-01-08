@@ -6,6 +6,7 @@ import typescript from '@rollup/plugin-typescript'
 import dts from 'rollup-plugin-dts'
 import terser from '@rollup/plugin-terser' 
 import peerDepsExternal from 'rollup-plugin-peer-deps-external'
+import preserveDirectives from 'rollup-plugin-preserve-directives';
 
 const require = createRequire(import.meta.url)
 
@@ -41,9 +42,16 @@ export default [
       nodeResolve(),
       commonjs(),
       typescript({tsconfig: './tsconfig.json'}),
+      preserveDirectives(),
       terser(),
     ],
-    external: ["react", "react-dom"]
+    external: ["react", "react-dom"],
+    // Ignore warnings when using "use client" directive
+    onwarn(warning, warn) {
+      if (warning.code !== 'MODULE_LEVEL_DIRECTIVE') {
+        warn(warning);
+      }
+    },
   },
   {
     input: 'src/index.ts',
