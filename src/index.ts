@@ -4,4 +4,4 @@ export { default as Link } from "./components/Link";
 export { default as Image } from "./components/Image";
 export { default as Card } from "./components/Card";
 export { default as Tag } from "./components/Tag";
-// export { default as ThemeSwitch } from "./components/ThemeSwitch";
+export { default as ThemeSwitch } from "./components/ThemeSwitch";
