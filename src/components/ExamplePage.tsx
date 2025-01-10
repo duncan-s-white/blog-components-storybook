@@ -1,6 +1,9 @@
 import Card from "./Card"
 import PageTitle from "./PageTitle"
 import { Primary } from "../stories/Card.stories"
+import SectionContainer from "./SectionContainer"
+import { Primary as headerProps } from '../stories/Header.stories';
+import Header from "./Header";
 
 /** Example Page / Organism UI Component */
 export default function ExamplePage(){
@@ -8,7 +11,8 @@ export default function ExamplePage(){
 const data = [Primary.args, Primary.args, Primary.args]
 
   return (
-    <section className="mx-auto max-w-3xl px-4 sm:px-6 xl:max-w-5xl xl:px-0">
+    <SectionContainer>
+      <Header {...headerProps.args} />
       <div className="space-y-2 pb-8 pt-6 md:space-y-2">
         <PageTitle>Example Page</PageTitle>
       </div>
@@ -26,6 +30,6 @@ const data = [Primary.args, Primary.args, Primary.args]
           }
         </div>
       </div>
-    </section>
+    </SectionContainer>
   )
 }

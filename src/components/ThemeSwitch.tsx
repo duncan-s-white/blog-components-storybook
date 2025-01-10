@@ -46,16 +46,14 @@ const Monitor = () => (
 )
 const Blank = () => <svg className="h-6 w-6" />
 
+
+/** Theme Switch UI Component */
 const ThemeSwitch = () => {
   const [mounted, setMounted] = useState(false)
   const { theme, setTheme, resolvedTheme } = useTheme()
 
   // When mounted on client, now we can show the UI
   useEffect(() => setMounted(true), [])
-
-  useEffect(() => {
-    console.log('changing theme, resolved theme: ' + resolvedTheme)
-  }, [theme])
 
   return (
     <div className="mr-5 flex items-center">

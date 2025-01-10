@@ -5,3 +5,8 @@ export { default as Image } from "./components/Image";
 export { default as Card } from "./components/Card";
 export { default as Tag } from "./components/Tag";
 export { default as ThemeSwitch } from "./components/ThemeSwitch";
+export { default as MobileNav } from "./components/MobileNav";
+export { default as Icon } from "./components/icons/";
+export { default as SocialIcon } from "./components/social-icons";
+export { default as Header } from "./components/Header";
+export { default as SectionContainer } from "./components/SectionContainer";
